@@ -27,6 +27,13 @@ notebooks = [
 ]
 
 [dependency-groups]
+dev = [
+    "numpy",
+    "matplotlib",
+    "scikit-learn",
+    "graphviz",
+]
+
 test = [
     "pytest",
     "torch; python_version >= '3.9'",

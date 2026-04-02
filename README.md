@@ -17,19 +17,22 @@ If you are working from a local checkout and prefer `uv`:
 uv sync
 ```
 
-This repo now includes a `pyproject.toml`, so `uv sync` will create `.venv`, install the package in editable mode, and keep the environment aligned with `uv.lock`.
+This repo now includes a `pyproject.toml`, so `uv sync` will create `.venv`, install the package in editable mode, and keep the environment aligned with `uv.lock`. The default `uv sync` also includes the notebook dependencies used by `demo.ipynb`.
 
 Useful variants:
 
 ```bash
-# install notebook dependencies used by demo.ipynb and trace_graph.ipynb
-uv sync --extra notebooks
-
 # install test dependencies
 uv sync --group test
 
 # install both notebook and test dependencies
 uv sync --group test --extra notebooks
+```
+
+If you want the leanest possible environment without notebook dependencies:
+
+```bash
+uv sync --no-dev
 ```
 
 ### Example usage
@@ -92,7 +95,7 @@ uv sync --group test
 uv run pytest
 ```
 
-If you want the notebook environment as well:
+If you want the notebook environment explicitly as a published extra as well:
 
 ```bash
 uv sync --group test --extra notebooks
