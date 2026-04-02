@@ -14,9 +14,22 @@ pip install micrograd
 If you are working from a local checkout and prefer `uv`:
 
 ```bash
-uv venv
-source .venv/bin/activate
-uv pip install -e .
+uv sync
+```
+
+This repo now includes a `pyproject.toml`, so `uv sync` will create `.venv`, install the package in editable mode, and keep the environment aligned with `uv.lock`.
+
+Useful variants:
+
+```bash
+# install notebook dependencies used by demo.ipynb and trace_graph.ipynb
+uv sync --extra notebooks
+
+# install test dependencies
+uv sync --group test
+
+# install both notebook and test dependencies
+uv sync --group test --extra notebooks
 ```
 
 ### Example usage
@@ -75,10 +88,20 @@ python -m pytest
 With `uv`, you can set up the environment and run the tests with:
 
 ```bash
-uv venv
-source .venv/bin/activate
-uv pip install -e . pytest torch
-pytest
+uv sync --group test
+uv run pytest
+```
+
+If you want the notebook environment as well:
+
+```bash
+uv sync --group test --extra notebooks
+```
+
+For `trace_graph.ipynb`, you still need the Graphviz system binary installed separately, for example on macOS:
+
+```bash
+brew install graphviz
 ```
 
 ### License
