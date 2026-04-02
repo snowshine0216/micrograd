@@ -11,6 +11,14 @@ A tiny Autograd engine (with a bite! :)). Implements backpropagation (reverse-mo
 pip install micrograd
 ```
 
+If you are working from a local checkout and prefer `uv`:
+
+```bash
+uv venv
+source .venv/bin/activate
+uv pip install -e .
+```
+
 ### Example usage
 
 Below is a slightly contrived example showing a number of possible supported operations:
@@ -62,6 +70,15 @@ To run the unit tests you will have to install [PyTorch](https://pytorch.org/), 
 
 ```bash
 python -m pytest
+```
+
+With `uv`, you can set up the environment and run the tests with:
+
+```bash
+uv venv
+source .venv/bin/activate
+uv pip install -e . pytest torch
+pytest
 ```
 
 ### License
